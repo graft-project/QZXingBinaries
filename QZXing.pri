@@ -32,9 +32,9 @@ windows {
 mac {
     LIBS_PATH = -L$$PWD/libs/mac
     CONFIG(release, debug|release) {
-        LIBS += -L$$LIBS_PATH/release -llibQZXing
+        LIBS += -L$$LIBS_PATH/release -lQZXing
     }
-    LIBS += -L$$LIBS_PATH/debug -llibQZXing
+    LIBS += -L$$LIBS_PATH/debug -lQZXing
 }
 
 ios {
