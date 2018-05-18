@@ -1,5 +1,3 @@
-CONFIG += qzxing_multimedia
-
 QT += multimedia
 
 DEFINES += QZXING_QML QZXING_MULTIMEDIA DISABLE_LIBRARY_FEATURES
@@ -40,9 +38,9 @@ mac {
 ios {
     LIBS_PATH = -L$$PWD/libs/ios
     CONFIG(release, debug|release) {
-        LIBS += -L$$LIBS_PATH/release -llibQZXing
+        LIBS += -L$$LIBS_PATH/release -lQZXing
     }
-    LIBS += -L$$LIBS_PATH/debug -llibQZXing
+    LIBS += -L$$LIBS_PATH/debug -lQZXing
 }
 
 android {
