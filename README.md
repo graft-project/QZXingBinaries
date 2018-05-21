@@ -8,20 +8,65 @@ Go to the qzxing directory: `cd qzxing/src`, and open `QZXing.pro`.
 
 Before `include(QZXing.pri)` add `CONFIG += qzxing_multimedia` uncomment `CONFIG += staticlib` and comment `DEFINES -= DISABLE_LIBRARY_FEATURES`. And start building the project.
 After that your QZXing.pro must look as:
-![QZXing.pro after editing](https://github.com/EDDragonWolf/QZXingBinaries/tree/master/images/QZXing.pro_after_editing.png).
+```
+...
+CONFIG += qzxing_multimedia
 
-After build you can find your static binaries in shadow build directory:
+include(QZXing.pri)
 
-![Static binaries after build](https://github.com/EDDragonWolf/QZXingBinaries/tree/master/images/static_binaries_after_build.png)
+VERSION = 2.3
+
+TARGET = QZXing
+TEMPLATE = lib
+
+CONFIG += staticlib
+
+#DEFINES -= DISABLE_LIBRARY_FEATURES
+symbian {
+    TARGET.UID3 = 0xE618743C
+    TARGET.EPOCALLOWDLLDATA = 1
+    addFiles.sources = QZXing.dll
+    addFiles.path = !:/sys/bin
+    DEPLOYMENT += addFiles
+...
+```
+
+After build you can find your static binaries in shadow build directory.
+### For windows you'll get:
+on debug  `QZXing.lib` and `QZXing2.pdb`
+
+on release `QZXing.lib`.
+
+### For Android iOS MacOS and Windows MinGW you'll get in debug and release mode:
+`libQZXing.a`
 
 Go to the your project and create directory `staticBinaries`, and copied static binaries in that directory, open your project and link your static binaries:
 
-`QT += multimedia
+```
+QT += multimedia quick qml
 
 DEFINES += QZXING_QML QZXING_MULTIMEDIA DISABLE_LIBRARY_FEATURES
 
 INCLUDEPATH = $$PWD/staticBinaries/include
+LIBS += -L$$PWD/staticBinaries/libs -lQZXing
 
-LIBS += -L$$PWD/staticBinaries/libs -lQZXing`
+TEMPLATE = app
 
-![QZXing.pro after editing](https://github.com/EDDragonWolf/QZXingBinaries/tree/master/images/add_static_binaries_into_your_project.png)
+CONFIG += c++11 qzxing_multimedia
+
+CONFIG(debug, debug|release) {
+    CONFIG+=qml_debug
+} else {
+
+...
+
+# Additional import path used to resolve QML modules in Qt Creator's code model
+QML_IMPORT_PATH =
+
+#include(../../src/QZXing.pri)
+
+# Default rules for deployment.
+include(deployment.pri)
+
+...
+```
