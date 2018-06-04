@@ -33,8 +33,8 @@ windows {
     }
 }
 
-mac {
-    LIBS_PATH = $$PWD/libs/mac
+ios {
+    LIBS_PATH = $$PWD/libs/ios
     CONFIG(release, debug|release) {
         LIBS += -L$$LIBS_PATH/release -lQZXing
     }
@@ -43,8 +43,8 @@ mac {
     }
 }
 
-ios {
-    LIBS_PATH = $$PWD/libs/ios
+mac {
+    LIBS_PATH = $$PWD/libs/mac
     CONFIG(release, debug|release) {
         LIBS += -L$$LIBS_PATH/release -lQZXing
     }
