@@ -74,3 +74,14 @@ android {
         }
     }
 }
+
+linux {
+    LIBS_PATH = $$PWD/libs/linux
+    CONFIG(release, debug|release) {
+        LIBS += -L$$LIBS_PATH/release -lQZXing
+    }
+    CONFIG(debug, debug|release) {
+        LIBS += -L$$LIBS_PATH/debug -lQZXing
+    }
+}
+
