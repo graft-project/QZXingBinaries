@@ -7,81 +7,43 @@ INCLUDEPATH  += $$PWD/include
 windows {
     win32-msvc* {
         contains(QMAKE_TARGET.arch, x86) {
-            CONFIG(release, debug|release) {
-                LIBS += -L$$PWD/libs/msvc2015_x86/release -lQZXing
-            }
-            CONFIG(debug, debug|release) {
-                LIBS += -L$$PWD/libs/msvc2015_x86/debug -lQZXing
-            }
+            PLATFORM_PATH = msvc2015_x86
         } else {
-            CONFIG(release, debug|release) {
-                LIBS += -L$$PWD/libs/msvc2017_x64/release -lQZXing
-            }
-            CONFIG(debug, debug|release) {
-                LIBS += -L$$PWD/libs/msvc2017_x64/debug -lQZXing
-            }
+            PLATFORM_PATH = msvc2017_x64
         }
     }
 
     win32-g++ {
-        CONFIG(release, debug|release) {
-            LIBS += -L$$PWD/libs/mingw_x86/release -lQZXing
-        }
-        CONFIG(debug, debug|release) {
-            LIBS += -L$$PWD/libs/mingw_x86/debug -lQZXing
-        }
+        PLATFORM_PATH = mingw_x86
     }
 }
 
 ios {
-    LIBS_PATH = $$PWD/libs/ios
-    CONFIG(release, debug|release) {
-        LIBS += -L$$LIBS_PATH/release -lQZXing
-    }
-    CONFIG(debug, debug|release) {
-        LIBS += -L$$LIBS_PATH/debug -lQZXing
-    }
+    PLATFORM_PATH = ios
 }
 
 mac {
-    LIBS_PATH = $$PWD/libs/mac
-    CONFIG(release, debug|release) {
-        LIBS += -L$$LIBS_PATH/release -lQZXing
-    }
-    CONFIG(debug, debug|release) {
-        LIBS += -L$$LIBS_PATH/debug -lQZXing
-    }
+    PLATFORM_PATH = mac
 }
 
 android {
-    LIBS_PATH = $$PWD/libs/android
-
     equals(ANDROID_TARGET_ARCH, armeabi-v7a) {
-        CONFIG(release, debug|release) {
-            LIBS += -L$$LIBS_PATH/armeabi-v7a/release -lQZXing
-        }
-        CONFIG(debug, debug|release) {
-            LIBS += -L$$LIBS_PATH/armeabi-v7a/debug -lQZXing
-        }
+        PLATFORM_PATH = android/armeabi-v7a
     }
 
     equals(ANDROID_TARGET_ARCH, x86) {
-        CONFIG(release, debug|release) {
-            LIBS += -L$$LIBS_PATH/x86/release -lQZXing
-        }
-        CONFIG(debug, debug|release) {
-            LIBS += -L$$LIBS_PATH/x86/debug -lQZXing
-        }
+        PLATFORM_PATH = android/x86
     }
 }
 
 linux {
-    LIBS_PATH = $$PWD/libs/linux
-    CONFIG(release, debug|release) {
-        LIBS += -L$$LIBS_PATH/release -lQZXing
-    }
-    CONFIG(debug, debug|release) {
-        LIBS += -L$$LIBS_PATH/debug -lQZXing
-    }
+    PLATFORM_PATH = linux
 }
 
+LIBS_PATH = $$PWD/libs/$$PLATFORM_PATH
+CONFIG(release, debug|release) {
+    LIBS += -L$$LIBS_PATH/release -lQZXing
+}
+CONFIG(debug, debug|release) {
+    LIBS += -L$$LIBS_PATH/debug -lQZXing
+}
