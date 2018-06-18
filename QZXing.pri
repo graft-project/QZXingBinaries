@@ -21,9 +21,10 @@ windows {
 ios {
     PLATFORM_PATH = ios
 }
-
-mac {
-    PLATFORM_PATH = mac
+else {
+    mac {
+        PLATFORM_PATH = mac
+    }
 }
 
 android {
