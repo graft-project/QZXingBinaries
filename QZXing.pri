@@ -36,9 +36,10 @@ android {
         PLATFORM_PATH = android/x86
     }
 }
-
-linux {
-    PLATFORM_PATH = linux
+else {
+    linux {
+        PLATFORM_PATH = linux
+    }
 }
 
 LIBS_PATH = $$PWD/libs/$$PLATFORM_PATH
