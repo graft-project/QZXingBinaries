@@ -20,8 +20,7 @@ windows {
 
 ios {
     PLATFORM_PATH = ios
-}
-else {
+} else {
     mac {
         PLATFORM_PATH = mac
     }
@@ -35,8 +34,7 @@ android {
     equals(ANDROID_TARGET_ARCH, x86) {
         PLATFORM_PATH = android/x86
     }
-}
-else {
+} else {
     linux {
         PLATFORM_PATH = linux
     }
