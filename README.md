@@ -56,7 +56,7 @@ symbian {
 
 After build you can find your static binaries in shadow build directory.
 
-**For windows you'll get:**
+**For Windows you'll get:**
 
 on debug  `QZXing.lib` and `QZXing2.pdb`
 
