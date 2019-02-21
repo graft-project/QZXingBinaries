@@ -5,19 +5,19 @@ In our repository all binaries build from this [commit](https://github.com/ftyli
 
 **Binaries build environment configuration:**
 
-| Title             | Version     |
-| ----------------  | ----------- |
-| Qt Creator        | 4.8.0       |
-| Qt                | 5.12.0      |
+| Title             | Version                            |
+| ----------------  | ---------------------------------- |
+| Qt Creator        | (Mac OS - 4.8.0) (Windows - 4.8.1) |
+| Qt                | 5.12.1                             |
 
 **For building on Windows were used:**
-* msvc2017 x64, x86
+* msvc2017 x64
 * MinGW x64
 
 **For building on Android were used:**
-* JDK - 1.8.0_191
+* JDK - 1.8.0_192
 * SDK - 26.1.1
-* NDK - 15.2.4
+* NDK - 18.1.5063045
 * platforms API - android-28
 * compiler - Clang
 
