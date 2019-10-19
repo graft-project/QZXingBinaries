@@ -30,6 +30,10 @@ android {
     equals(ANDROID_TARGET_ARCH, armeabi-v7a) {
         PLATFORM_PATH = android/armeabi-v7a
     }
+    
+    equals(ANDROID_TARGET_ARCH, arm64-v8a) {
+        PLATFORM_PATH = android/arm64-v8a
+    }
 
     equals(ANDROID_TARGET_ARCH, x86) {
         PLATFORM_PATH = android/x86
